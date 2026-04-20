@@ -70,67 +70,6 @@
             color: #5a8f7b;
         }
 
-        /* Dropdown Menu */
-        nav li {
-            position: relative;
-        }
-
-        .dropdown-arrow {
-            font-size: 0.7rem;
-            margin-left: 3px;
-            vertical-align: middle;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-
-        nav li .dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 0.75rem);
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-            border-radius: 6px;
-            min-width: 210px;
-            z-index: 1001;
-            overflow: hidden;
-        }
-
-        /* Desktop: hover opens dropdown */
-        @media (hover: hover) {
-            nav li:hover .dropdown {
-                display: block;
-            }
-        }
-
-        /* Both desktop hover and mobile tap: .open class opens dropdown */
-        nav li.open .dropdown {
-            display: block;
-        }
-
-        nav li.open .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-
-        nav li .dropdown a {
-            display: block;
-            padding: 0.65rem 1.2rem;
-            white-space: nowrap;
-            font-size: 0.88rem;
-            color: #2c3e50;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        nav li .dropdown a:last-child {
-            border-bottom: none;
-        }
-
-        nav li .dropdown a:hover {
-            background: #f4f9f7;
-            color: #5a8f7b;
-        }
-
         /* Hero Section with Background Image */
         .hero {
             height: 85vh;
@@ -402,13 +341,7 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#background">Background</a></li>
             <li><a href="#what-we-do">What We Do</a></li>
-            <li class="has-dropdown">
-                <a href="/advisory" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Advisory Services <span class="dropdown-arrow">&#9662;</span></a>
-                <div class="dropdown">
-                    <a href="/individual-advisory">Individual Advisory</a>
-                    <a href="/advisory">Corporate Culture Advisory</a>
-                </div>
-            </li>
+            <li><a href="/advisory">Advisory Services</a></li>
             <li><a href="#the-name">The Name</a></li>
             <li><a href="#thought-leadership">Thought Leadership</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -506,39 +439,5 @@
     <footer>
         <p>&copy; 2026 Cedar Wave Holdings. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Tap-to-toggle dropdown for touch/mobile devices
-        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
-            toggle.addEventListener('click', function(e) {
-                var li = this.closest('li');
-                var isOpen = li.classList.contains('open');
-
-                // Close all open dropdowns first
-                document.querySelectorAll('.has-dropdown.open').forEach(function(el) {
-                    el.classList.remove('open');
-                    el.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-                });
-
-                // If it wasn't open, open it and prevent navigation on first tap
-                if (!isOpen) {
-                    e.preventDefault();
-                    li.classList.add('open');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-                // If it was already open, allow the link to navigate normally
-            });
-        });
-
-        // Close dropdown when tapping elsewhere on the page
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.has-dropdown')) {
-                document.querySelectorAll('.has-dropdown.open').forEach(function(el) {
-                    el.classList.remove('open');
-                    el.querySelector('.dropdown-toggle').setAttribute('aria-expanded', 'false');
-                });
-            }
-        });
-    </script>
 </body>
 </html>
